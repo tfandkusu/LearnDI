@@ -1,0 +1,2 @@
+# LearnDI
+DIを教えるためのAndroidアプリ
