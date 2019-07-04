@@ -10,6 +10,7 @@ class MyApplication : Application() {
     @Suppress("USELESS_CAST")
     override fun onCreate() {
         super.onCreate()
+        // この場所はアプリプロセス開始時に1回だけ呼ばれる
         val appModule = module {
             single { CardLocalDataStoreImpl() as CardLocalDataStore }
             single { CardRemoteDataStoreImpl() as CardRemoteDataStore }
