@@ -11,8 +11,9 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         val appModule = module {
-            single { CardApiDataStoreImpl() as CardApiDataStore }
-            single { CardRepositoryImpl(get()) as CardRepository }
+            single { CardLocalDataStoreImpl() as CardLocalDataStore }
+            single { CardRemoteDataStoreImpl() as CardRemoteDataStore }
+            single { CardRepositoryImpl(get(),get()) as CardRepository }
             viewModel { MainPresenter(get()) }
         }
         startKoin {

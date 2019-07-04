@@ -36,6 +36,6 @@ class MainActivity : AppCompatActivity() {
                     progress.visibility = View.GONE
             }
         })
-        presenter.load(1)
+        presenter.load(false, 1)
     }
 }

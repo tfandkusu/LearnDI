@@ -10,9 +10,9 @@ class MainPresenter(private val repository: CardRepository) : ViewModel() {
 
     val progress = MutableLiveData<Boolean>()
 
-    fun load(id: Int) = GlobalScope.launch {
+    fun load(refresh: Boolean, id: Int) = GlobalScope.launch {
         progress.postValue(true)
-        val card = repository.getCard(id)
+        val card = repository.getCard(refresh, id)
         progress.postValue(false)
         this@MainPresenter.card.postValue(card)
     }
