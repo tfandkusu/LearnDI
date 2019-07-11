@@ -9,7 +9,7 @@ class MainActionCreator(dispatcher: Dispatcher, private val repository: CardRepo
     fun load(refresh: Boolean, id: Int) {
         // リフレッシュ開始
         if (refresh)
-            dispatcher.dispatch(RefreshRequestAction())
+            dispatcher.dispatch(RefreshRequestAction)
         // 名刺取得
         loadCard(refresh, id)
         // 名刺画像取得

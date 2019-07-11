@@ -7,12 +7,13 @@ open class Action
 
 /**
  * リロードがリクエストされた
+ * 引数の無いアクションはシングルトンにする
  */
-class RefreshRequestAction: Action()
+object RefreshRequestAction: Action()
 
 /**
  * 名刺情報読み込み完了アクション
  */
-class CardLoadAction(val card: Card) : Action()
+data class CardLoadAction(val card: Card) : Action()
 
-class CardImageLoadAction(val bitmap: Bitmap) : Action()
+data class CardImageLoadAction(val bitmap: Bitmap) : Action()
