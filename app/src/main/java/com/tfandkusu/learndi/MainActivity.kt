@@ -70,6 +70,12 @@ class MainActivity : AppCompatActivity() {
                 swipeRefresh.isEnabled = it
             }
         })
+        // 名刺画像の表示
+        store.bitmap.observe(this, Observer { bitmap ->
+            bitmap?.let {
+                image.bitmap = it
+            }
+        })
         actionCreator.load(false, 1)
     }
 }
