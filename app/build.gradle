@@ -39,4 +39,8 @@ dependencies {
     implementation "org.koin:koin-core:2.0.1"
     implementation "org.koin:koin-android:2.0.1"
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+    //バージョン3以降はアノテーションを使う方式になった。
+    //noinspection GradleDependency
+    implementation 'de.greenrobot:eventbus:2.4.1'
+
 }

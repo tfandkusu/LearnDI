@@ -9,13 +9,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
 
     // DIを使った場合
-    private val presenter: MainPresenter by viewModel()
+    private val store: MainStore by viewModel()
+
+
+    private val actionCreator: MainActionCreator by inject()
 
     // IDを使わない場合
     //private lateinit var presenter: MainPresenter
@@ -33,14 +37,20 @@ class MainActivity : AppCompatActivity() {
 //        }).get(MainPresenter::class.java)
         setContentView(R.layout.activity_main)
 
-        presenter.card.observe(this, Observer { card ->
+        // 下スワイプリロード
+        swipeRefresh.setOnRefreshListener {
+            actionCreator.load(true, 1)
+        }
+
+        store.card.observe(this, Observer { card ->
             card?.let {
                 company.text = it.company
                 divisionAndTitle.text = "${it.division} ${it.title}"
                 name.text = it.name
             }
         })
-        presenter.progress.observe(this, Observer { flag ->
+        // プログレスの表示
+        store.progress.observe(this, Observer { flag ->
             flag?.let {
                 if (it)
                     progress.visibility = View.VISIBLE
@@ -48,6 +58,18 @@ class MainActivity : AppCompatActivity() {
                     progress.visibility = View.GONE
             }
         })
-        presenter.load(false, 1)
+        // リフレッシュ中の表示
+        store.refresh.observe(this, Observer { flag ->
+            flag?.let {
+                swipeRefresh.isRefreshing = it
+            }
+        })
+        // リフレッシュ操作ができるか
+        store.refreshEnabled.observe(this, Observer { flag ->
+            flag?.let {
+                swipeRefresh.isEnabled = it
+            }
+        })
+        actionCreator.load(false, 1)
     }
 }

@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:id="@+id/swipeRefresh">
+    <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/company"
+                tools:text="田中繊維株式会社"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/textBlack"
+                android:textSize="16sp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/company"
+                android:id="@+id/divisionAndTitle"
+                tools:text="営業部 係長"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/textBlack"
+                android:textSize="14sp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divisionAndTitle"
+                android:id="@+id/name"
+                tools:text="小林 美穂"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/textBlack"
+                android:textSize="16sp"
+        />
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:id="@+id/progress"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/company"
-            tools:text="田中繊維株式会社"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:textColor="@color/textBlack"
-            android:textSize="16sp"
-    />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/company"
-            android:id="@+id/divisionAndTitle"
-            tools:text="営業部 係長"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="16dp"
-            android:textColor="@color/textBlack"
-            android:textSize="14sp"
-    />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/divisionAndTitle"
-            android:id="@+id/name"
-            tools:text="小林 美穂"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="16dp"
-            android:textColor="@color/textBlack"
-            android:textSize="16sp"
-    />
-    <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:id="@+id/progress" />
-
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

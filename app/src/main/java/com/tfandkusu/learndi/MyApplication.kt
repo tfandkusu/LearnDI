@@ -12,9 +12,12 @@ class MyApplication : Application() {
         super.onCreate()
         // この場所はアプリプロセス開始時に1回だけ呼ばれる
         val appModule = module {
+            single { DispatcherImpl() as Dispatcher }
             single { CardLocalDataStoreImpl() as CardLocalDataStore }
             single { CardRemoteDataStoreImpl() as CardRemoteDataStore }
-            single { CardRepositoryImpl(get(),get()) as CardRepository }
+            single { CardRepositoryImpl(get(), get()) as CardRepository }
+            single { MainActionCreator(get(), get()) }
+            viewModel { MainStore() }
             viewModel { MainPresenter(get()) }
         }
         startKoin {
