@@ -15,6 +15,15 @@ open class NormalStore : ViewModel() {
 
     override fun onCleared() {
         // ライフサイクルが終わったら購読終了
-        EventBus.getDefault().unregister(this)
+        if (EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().unregister(this)
+    }
+
+    /**
+     * 単体テスト用の購読終了
+     */
+    fun clear() {
+        if (EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().unregister(this)
     }
 }

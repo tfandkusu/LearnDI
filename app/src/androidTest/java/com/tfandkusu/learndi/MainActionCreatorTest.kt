@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import io.mockk.*
 import org.junit.Test
 
+
 class MainActionCreatorTest {
     /**
      * 起動のテストを行う
@@ -59,6 +60,8 @@ class MainActionCreatorTest {
             dispatcher.dispatch(RefreshRequestAction)
             dispatcher.dispatch(CardLoadAction(card))
             dispatcher.dispatch(CardImageLoadAction(bitmap))
+            // 順番をテストできなかった。
+            // 2番目と3番目は順不同
         }
     }
 }
