@@ -40,6 +40,8 @@ class MainStore : NormalStore() {
      */
     fun onEvent(action: RefreshRequestAction) {
         refresh.value = true
+        cardData = null
+        bitmapData = null
     }
 
     private var cardData: Card? = null
